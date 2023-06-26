@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h3 v-if="props.details==true">Classement</h3>
+  <h2 v-if="props.details==true">Classement</h2>
   <table>
       <thead>
         <tr>
@@ -69,18 +69,21 @@ onMounted(() => {
     background: var(--prime-color);
   }
   th, tr {
-    height:28px; font-size:14px; border-bottom: 1px solid var(--prime-color);
+    height:2rem; font-size:1rem; border-bottom: 1px solid var(--prime-color);
   }
   td img{
     max-width: 20px; max-height: 20px; display: inline; padding-right: 2px;
   }
   .standing-1 {
+    font-size: 1.3rem;
     background: linear-gradient(to left, rgba(255,215,0,0.1),rgba(255,215,0,0.65), rgba(255,215,0,0.1));
   }
   .standing-2 {
+    font-size: 1.2rem;
     background: linear-gradient(to left, rgba(192,192,192,0.1),rgba(192,192,192,0.65), rgba(192,192,192,0.1));
   }
   .standing-3 {
+    font-size: 1.1rem;
     background: linear-gradient(to left, rgba(205,127,50,0.1),rgba(205,127,50,0.65), rgba(205,127,50,0.1));
   }
 </style>

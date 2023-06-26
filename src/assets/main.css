@@ -22,9 +22,10 @@ body {
   color:var(--prime-text)
 }
 main {
-  margin: 75px 0;
-  overflow: auto;
-  height: calc(100vh - 67px);
+  margin: 75px 0 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100vh - 75px);
   width: 100vw;
 }
 
@@ -52,17 +53,24 @@ a:visited, a:link {
   }
 }
 
+h1 {
+  font-family: Teko;
+  font-weight: 500;
+  font-size: 2.25rem;
+  line-height: 2.75rem;
+}
+
 h2 {
   font-family: Teko;
   font-weight: 500;
-  font-size: 1.8rem;
-  line-height: 2rem;
+  font-size: 2rem;
+  line-height: 2.5rem;
 }
 
 h3 {
   font-family: Teko;
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   line-height: 2rem;
 }
 p { 
@@ -81,8 +89,9 @@ table {
 .plain {
   position:relative;
   margin: 2.4rem 1.2rem 1.2rem;
-  padding: 0.6rem 1.4rem 3rem;
-  box-shadow: 0.3rem 0.3rem 0.3rem var(--shadow);
+  padding: 1.5rem  3rem;
+  box-shadow: 0 0.3rem 0.5rem var(--shadow);
+  border-bottom: 0.2rem solid;
 }
 
 .prime  {
@@ -93,7 +102,6 @@ table {
 .seconde {
   border-color: var(--seconde-color) ;
   background-color: var(--seconde-bg);
-  background-image: url('./images/bottom.png');
   background-repeat: no-repeat;
   background-size: 100% 50px ;
   background-position: bottom;
@@ -101,4 +109,7 @@ table {
 
 .text-center {
   text-align: center;
+}
+.text-left {
+  text-align: left;
 }

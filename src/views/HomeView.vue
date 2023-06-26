@@ -12,6 +12,9 @@ import Calendar from '../components/Calendar.vue'
         <League />
       </div>
       <div class="col-xs-6">
+        <div class="plain seconde text-center">
+          <h1>Printemps 2523</h1>
+        </div>
         <div class="plain prime">
           <Standing :competition="337" :details="true" :limit="14"/>
         </div>
