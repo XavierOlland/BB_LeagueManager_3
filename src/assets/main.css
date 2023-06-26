@@ -1,0 +1,104 @@
+@import './base.css';
+@import './season.css';
+@import './flexboxgrid.min.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Mulish&family=Teko:wght@400;500&display=swap');
+
+body {
+  background-image: var(--main-bg);
+  background-position: bottom;
+  background-size: cover;
+  overflow: hidden;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.2rem; 
+  font-family: Mulish;
+  font-weight: normal;
+  color:var(--prime-text)
+}
+main {
+  margin: 75px 0;
+  overflow: auto;
+  height: calc(100vh - 67px);
+  width: 100vw;
+}
+
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+a:visited, a:link {
+  color:var(--prime-text)
+}
+
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+    font-family: Mulish;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 rem;
+  }
+}
+
+h2 {
+  font-family: Teko;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2rem;
+}
+
+h3 {
+  font-family: Teko;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+p { 
+  font-size: 1rem; 
+  line-height: 1.2rem; 
+  text-align: justify; 
+  color:var(--seconde-text); 
+  display:inline-block; 
+  margin: 0.5rem 0; 
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.plain {
+  position:relative;
+  margin: 2.4rem 1.2rem 1.2rem;
+  padding: 0.6rem 1.4rem 3rem;
+  box-shadow: 0.3rem 0.3rem 0.3rem var(--shadow);
+}
+
+.prime  {
+  border-color: var(--prime-color);
+  background: var(--prime-bg);
+
+}
+.seconde {
+  border-color: var(--seconde-color) ;
+  background-color: var(--seconde-bg);
+  background-image: url('./images/bottom.png');
+  background-repeat: no-repeat;
+  background-size: 100% 50px ;
+  background-position: bottom;
+}
+
+.text-center {
+  text-align: center;
+}
