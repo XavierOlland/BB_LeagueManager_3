@@ -28,9 +28,9 @@ onMounted(() => {
         </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   h3 {
-    color: var(--seconde-color);
+    color: $seconde-color;
     display: inline;
   }
 </style>

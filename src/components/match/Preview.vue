@@ -1,83 +1,83 @@
 <script async setup>
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const props = defineProps({
   match: {}
 });
 </script>
 
 <template>
-  <div class="match">
-    <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_1 + '.png'" :title="match.name_1">
+  <div class="match" @click="router.push({ name: 'match', params: { id: match.id } })" :title="match.name_1+' VS '+match.name_2">
+    <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_1 + '.png'">
     <img class="versus" v-if="match.score_1 == null" src="../../assets/images/vs.png">
       <span class="score" v-else > <span :class="{'winner': match.score_1 >match.score_2 }">{{match.score_1}}</span> - <span :class="{'winner': match.score_1 < match.score_2 }">{{match.score_2}}</span> </span>
-    <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_2 + '.png'" :title="match.name_2">    
+    <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_2 + '.png'">    
   </div>
 </template>
 
-<style scoped>
-  img {
-    height: 3rem;
-    display: inline;
-      vertical-align: middle;
-  }
-  .versus {
-    height: 2rem;
-  }
+<style lang="scss" scoped>
   .match {
-    color: var(--prime-text);
+    color: $prime-text;
     vertical-align: middle;
     text-align: center;
     margin: 0.5rem 0;
     padding: 1rem 0.2rem !important;
     border-radius: 5px;
     border: 1px solid transparent;
-  }
-  span {
+    span {
       vertical-align: middle;
       display: inline-block;
     }
+    img {
+      height: 3rem;
+      display: inline;
+      vertical-align: middle;
+    }
     p {
       font-family: 'Mulish';
-      color: var(--prime-text);
+      color: $prime-text;
       margin: 0;
     }
     hr {
-      margin: 0.5rem auto;
-      border-top: 1px solid var(--prime-color);
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-top: 1px solid $prime-color;
       width: 75%;
     }
+    .versus {
+      height: 2rem;
+    }
     .score {
-      font-family: 'Teko';
-      font-size: 1.5rem;
+      font-family: 'Akashi';
+      font-size: 1.3rem;
       line-height: 1.6rem !important;
       font-weight: 400;
+      letter-spacing: -0.15rem;
       margin: 0 0.5rem;
     }
     .winner {
-      color: var(--prime-color);
+      color: $prime-color;
       font-size: 1.7rem;
-      font-weight: 500;
     }
-    .current .winner {
-      color: var(--link-contrast)
-    }
+  }
   .match:hover {
-    background: var(--prime-bg);
-    border: 1px solid var(--prime-color);
+    background: $prime-bg;
+    border: 1px solid $prime-color;
     .winner {
-      color: var(--prime-color);
+      color: $prime-color;
     }
   }
   .current {
     hr {
-      border-color: var(--link-contrast);
+      border-color: $link-contrast;
     }
     .winner {
-      color: var(--link-contrast);
+      color: $link-contrast;
     }
     .match:hover{
       hr {
-        border-color: var(--prime-color);
+        border-color: $prime-color;
       }
     }
   }

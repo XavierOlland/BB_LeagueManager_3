@@ -24,7 +24,3 @@ onMounted( () => {
     <Round v-for="day in competition.calendar.sort((a, b) => b.round - a.round)" :day="day" :competition="competition"></Round>
 
 </template>
-
-<style scoped>
-
-</style>

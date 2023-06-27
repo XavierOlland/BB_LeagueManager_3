@@ -61,15 +61,15 @@ onMounted(() => {
     </table>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   table {
     width: 100%;
   }
   th {
-    background: var(--prime-color);
+    background: $prime-color;
   }
   th, tr {
-    height:2rem; font-size:1rem; border-bottom: 1px solid var(--prime-color);
+    height:2rem; font-size:1rem; border-bottom: 1px solid $prime-color;
   }
   td img{
     max-width: 20px; max-height: 20px; display: inline; padding-right: 2px;

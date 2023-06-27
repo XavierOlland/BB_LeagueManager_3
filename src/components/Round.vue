@@ -1,5 +1,5 @@
 <script async setup>
-  import Preview from '../components/match/Preview.vue'
+  import Preview from './match/Preview.vue'
 
   const props = defineProps({
     day: {},
@@ -17,9 +17,8 @@
   </div>
 </template>
 
-<style scoped>
-.current {
-  background-color: var(--prime-color);
-}
-
+<style lang="scss" scoped>
+  .current {
+    background: $prime-color;
+  }
 </style>

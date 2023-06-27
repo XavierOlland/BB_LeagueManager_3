@@ -16,6 +16,11 @@ const router = createRouter({
       // this generates a separate chunk (Admin.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AdminView.vue')
+    },
+    {
+     path: '/match/:id',
+     name: 'match',
+     component: () => import('../views/Match.vue')
     }
   ]
 })
