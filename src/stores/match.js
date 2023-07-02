@@ -5,7 +5,9 @@ const route = import.meta.env.VITE_BACKEND_URL + import.meta.env.VITE_BACKEND_RO
 
 export const useMatchStore = defineStore("match",{
     state: () => ({
-        match: {}
+        match: Object,
+        team_1: Object,
+        team_2: Object
     }),
     getters: {
       getMatch(state){
@@ -19,6 +21,8 @@ export const useMatchStore = defineStore("match",{
               id: id
             })
             this.match = response.data;
+            this.team_1 = response.data.teams[0];
+            this.team_2 = response.data.teams[1];
           }
           catch (error) {
             alert(error)

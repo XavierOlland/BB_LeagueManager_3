@@ -8,9 +8,9 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="match" @click="router.push({ name: 'match', params: { id: match.id } })" :title="match.name_1+' VS '+match.name_2">
+  <div class="match" @click="router.push({ name: 'match', params: { id: match.id } })" :title="match.name_1+' VS ' + match.name_2">
     <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_1 + '.png'">
-    <img class="versus" v-if="match.score_1 == null" src="../../assets/images/vs.png">
+    <img class="versus" v-if="match.score_1 == null" src="../../assets/images/Versus.png">
       <span class="score" v-else > <span :class="{'winner': match.score_1 >match.score_2 }">{{match.score_1}}</span> - <span :class="{'winner': match.score_1 < match.score_2 }">{{match.score_2}}</span> </span>
     <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_2 + '.png'">    
   </div>
@@ -46,7 +46,7 @@ const props = defineProps({
       width: 75%;
     }
     .versus {
-      height: 2rem;
+      height: 1.75rem;
     }
     .score {
       font-family: 'Akashi';
