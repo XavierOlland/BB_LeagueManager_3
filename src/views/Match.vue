@@ -1,43 +1,42 @@
 <script setup>
-import { onMounted, computed } from "vue";
-import { storeToRefs } from 'pinia'
-import { useRoute } from 'vue-router'
-import { useMatchStore } from "../stores/match"
-import { useLeagueStore } from "../stores/league"
-import Team from "../components/match/Team.vue"
+  import { onMounted, computed } from "vue";
+  import { useRoute } from 'vue-router'
+  import { useMatchStore } from "../stores/match"
+  import Team from "../components/match/Team.vue"
+  import Update from "../components/match/Update.vue"
 
 
-const route = useRoute()
-const store = useMatchStore()
-const params = useLeagueStore()
-const { getTranslation } = storeToRefs(params)
+  const route = useRoute()
+  const store = useMatchStore()
+  const admin = window.admin
 
-const admin = window.admin
+  const match = computed(() =>{
+    return store.match
+  })
+  const team_1 = computed(() =>{
+    return store.team_1
+  })
+  const team_2 = computed(() =>{
+    return store.team_2
+  })
+  
+  function viewForum(url) {
+    window.open( url, "_blank" )
+  }
 
-const match = computed(() =>{
-  return store.match
-})
-const team_1 = computed(() =>{
-  return store.team_1
-})
-const team_2 = computed(() =>{
-  return store.team_2
-})
-function viewForum(url) {
-  window.open( url, "_blank" )
-}
+  function updateMatch(){
+    store.fetchMatch(route.params.id)
+  } 
 
-onMounted(() => {
-  store.fetchMatch(route.params.id)
-});
-
-
+  onMounted(() => {
+    store.fetchMatch(route.params.id)
+  });
 </script>
 
 <template>
   <main>
     <div class="row center-xs">
-      <div class="col-xs-5" @click="$router.push({ name: 'Competition', params: { id: match.competition_id }})">
+      <div class="col-xs-5" @click="$router.push({ name: 'home' })">
         <div class="plain header seconde text-center zelda">
           <h3 v-if="match.competition_name==match.season">{{match.competition_name}}</h3>
           <h3 v-else>{{match.season}} - {{match.competition_name}}</h3>
@@ -54,11 +53,15 @@ onMounted(() => {
       </div>
       <Team v-if="team_2" :team="team_2" :score="match.team_2_score" :order="2" :colour="match.team_2_color_1"/>
     </div>
-    <div v-if="match.team_1_score != null" class="row center-xs">
-      <div class="col-xs-4">
+    <div class="row center-xs">
+      <div v-if="match.team_1_score != null" class="col-xs-4">
         <div class="plain conf seconde zelda" @click="viewForum(match.forum_url)">
           <p>Assistez à la conférence de presse des coachs et venez commenter sur le forum.</p>
         </div>
+      </div>
+      <div v-else class="col-xs-6 plain seconde">
+        <h2>Enregistrement du match</h2>
+        <Update :match="match" @submit="updateMatch"></Update>
       </div>
     </div>
   </main>

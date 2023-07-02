@@ -1,10 +1,10 @@
 <script async setup>
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
-import { useLeagueStore } from "../../stores/league"
+import { useParamStore } from "../../stores/params"
 
 
-const params = useLeagueStore()
+const params = useParamStore()
 const { getTranslation } = storeToRefs(params)
 
 const router = useRouter()
@@ -44,7 +44,7 @@ const props = defineProps({
         span {
           color: $prime-text;
           font-family: "Mulish";
-          font-size: 1.6rem;
+          font-size: 1.5rem;
         }
       }
     }

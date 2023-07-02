@@ -28,6 +28,15 @@ export const useMatchStore = defineStore("match",{
             alert(error)
             console.log(error)
         }
+      },
+      async updateMatch(data) {
+        try {
+            await axios.post(route + 'matchManualSave', data)
+            }
+          catch(error) {
+            alert(error)
+            console.log(error)
+        }
       }
     },
 })
