@@ -1,9 +1,10 @@
 <script setup>
-import MatchsAdd from '../components/admin/MatchsAdd.vue'
+  import MatchsAdd from '../components/admin/MatchsAdd.vue'
+  const admin = window.admin
 </script>
 
 <template>
-  <main>
+  <main v-if="admin==1">
     <div class="plain prime">
       <MatchsAdd />
     </div>

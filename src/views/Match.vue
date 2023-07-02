@@ -5,9 +5,9 @@
   import Team from "../components/match/Team.vue"
   import Update from "../components/match/Update.vue"
 
-
   const route = useRoute()
   const store = useMatchStore()
+  const user = window.user
   const admin = window.admin
 
   const match = computed(() =>{
@@ -59,7 +59,7 @@
           <p>Assistez à la conférence de presse des coachs et venez commenter sur le forum.</p>
         </div>
       </div>
-      <div v-else class="col-xs-6 plain seconde">
+      <div v-else-if="match.team_1_score==null && (user.coach.id==match.coach_id_1 || user.coach.id==match.coach_id_2 || admin==1)" class="col-xs-6 plain seconde">
         <h2>Enregistrement du match</h2>
         <Update :match="match" @submit="updateMatch"></Update>
       </div>
