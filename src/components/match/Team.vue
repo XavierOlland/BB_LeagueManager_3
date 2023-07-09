@@ -18,7 +18,7 @@ const props = defineProps({
 
 <template>
   <div class="col-xs-5 team_1" :class="{'col-xs-6': score!=null}">
-    <div class="plain prime row" :class="{'end-xs':order==1}">
+    <div class="plain prime row" :class="{'end-xs':order==1,'start-xs':order!=1,'no-score': score==null}">
       <div v-if="score!=null" class="scoreBoard colour bottom-xs" :class="{'last-xs':order==1}">
         {{score}}
       </div>
@@ -37,7 +37,6 @@ const props = defineProps({
   }
   .plain.prime {
     padding:0;
-    border-color:v-bind('props.colour');
     .teamBoard {
       padding: 1.5rem 3rem;
       h3 {
@@ -59,5 +58,14 @@ const props = defineProps({
       text-shadow: $shadow 2px 2px;
       padding-top: 1rem;
     }
+  }
+  .end-xs {
+    @include advancedBorders(transparent,v-bind('props.colour'),#fff);
+  }
+  .start-xs {
+    @include advancedBorders(#fff,v-bind('props.colour'),transparent);
+  }
+  .no-score {
+    @include borders(v-bind('props.colour'));
   }
 </style>

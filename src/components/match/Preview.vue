@@ -8,11 +8,19 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="match zelda" @click="router.push({ name: 'match', params: { id: match.id } })" :title="match.name_1+' VS ' + match.name_2">
+  <div class="match zelda middle-xs" :class="{'forum':$route.fullPath.indexOf('iframe')==1}" @click="router.push({ name: 'match', params: { id: match.id } })" :title="match.name_1+' VS ' + match.name_2">
+    <div v-if="$route.fullPath.indexOf('iframe')==1">
+      <h3>{{ match.name_1 }}</h3>
+      <h4>{{ match.coach_name_1 }}</h4>
+    </div> 
     <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_1 + '.png'">
     <img class="versus" v-if="match.score_1 == null" src="../../assets/images/Versus.png">
       <span class="score" v-else > <span :class="{'winner': match.score_1 >match.score_2 }">{{match.score_1}}</span> - <span :class="{'winner': match.score_1 < match.score_2 }">{{match.score_2}}</span> </span>
-    <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_2 + '.png'">    
+    <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_2 + '.png'">
+    <div v-if="$route.fullPath.indexOf('iframe')==1">
+      <h3>{{ match.name_2 }}</h3>
+      <h4>{{ match.coach_name_2 }}</h4>
+    </div>     
   </div>
 </template>
 
@@ -21,10 +29,9 @@ const props = defineProps({
     color: $prime-text;
     vertical-align: middle;
     text-align: center;
-    margin: 0.5rem 0;
-    padding: 1rem 0.2rem !important;
-    border-radius: 5px;
-    border: 1px solid transparent;
+    margin: 0.5rem 0.25rem;
+    padding: 0.5rem !important;
+    border-bottom: 1px solid transparent;
     span {
       vertical-align: middle;
       display: inline-block;
@@ -62,23 +69,29 @@ const props = defineProps({
     }
   }
   .match:hover {
-    background: $prime-bg;
-    border: 1px solid $prime-color;
+    border-bottom: 1px solid;
+    @include borders($prime-color);
     .winner {
       color: $prime-color;
     }
   }
   .current {
     hr {
-      border-color: $link-contrast;
+      border-color: $focus-color;
     }
     .winner {
-      color: $link-contrast;
+      color: $link-contrast !important;
     }
     .match:hover{
+      border-bottom: 1px solid;
+      @include borders($focus-color);
       hr {
         border-color: $prime-color;
       }
     }
+  }
+  .forum {
+    display:inline-flex;
+    margin: 0.5rem 2rem ;
   }
 </style>

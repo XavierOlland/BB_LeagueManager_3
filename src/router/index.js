@@ -1,27 +1,34 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.VITE_BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: () => import('../views/HomeView.vue')
+
     },
     {
       path: '/admin',
       name: 'admin',
-      // route level code-splitting
-      // this generates a separate chunk (Admin.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AdminView.vue')
     },
     {
      path: '/match/:id',
      name: 'match',
      component: () => import('../views/Match.vue')
-    }
+    },
+    {
+     path: '/iframe/match/:id',
+     name: 'forumMatch',
+     component: () => import('../views/iframes/Match.vue')
+    },
+    {
+      path: '/iframe/round/:id/:day',
+      name: 'roundMatch',
+      component: () => import('../views/iframes/Round.vue')
+     }
   ]
 })
 

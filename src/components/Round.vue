@@ -11,7 +11,7 @@
 <template>
   <div class="plain prime" :class="{ 'current': day.round == day.currentRound && competition.active==1 && competition.format != 'ladder'}">
     <h3>Journée {{ day.round }}</h3>
-    <div class="row between-xs">
+    <div class="row around-xs">
       <Preview v-for="match in day.matchs" :match="match"/>
     </div>
   </div>
@@ -19,6 +19,10 @@
 
 <style lang="scss" scoped>
   .current {
-    background: $prime-color;
+    @include borders($focus-bg);
+    background: $focus-bg;
+    h3 {
+      color: $focus-color;
+    }
   }
 </style>

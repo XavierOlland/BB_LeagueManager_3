@@ -1,6 +1,6 @@
 <script setup>
   import MatchsAdd from '../components/admin/MatchsAdd.vue'
-  const admin = window.admin
+  const admin = window.user.admin
 </script>
 
 <template>

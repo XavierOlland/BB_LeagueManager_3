@@ -3,3 +3,11 @@
     font-weight: 500;
     margin:0;
 }
+@mixin borders($color) {
+    border-image-source: linear-gradient(to left, transparent, $color, transparent);
+    border-image-slice: 1;
+}
+@mixin advancedBorders($left,$main,$right) {
+    border-image-source: linear-gradient(to right, $left, $main, $right); 
+    border-image-slice: 1;
+}

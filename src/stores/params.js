@@ -8,11 +8,13 @@ export const useParamStore = defineStore("params",{
     state: () => ({
         params: {
           stats:{},
-          races: races
+          races: races,
+          user:{},
+          season: String
         }
     }),
     getters: {
-      getLeague(state){
+      getParams(state){
           return state.params
         },
       getTranslation: (state) => (id) => {
@@ -22,15 +24,30 @@ export const useParamStore = defineStore("params",{
       }
     },
     actions: {
-      async fetchLeague() {
+      async fetchUser() {
         try {
-            const data = await axios.get(route + 'boot')
-            this.league = data.data
+            const data = await axios.get(route + 'user')
+            this.params.user = data.data
+            window.user = data.data
+          }
+          catch (error) {
+            alert(error)
+            console.log(error)
+        }
+      },
+      async fetchParams() {
+        try {
+            const result = await axios.get(route + 'boot')
+            this.params.stats = result.data.stats
+            //this.params = result.data.parameters
+            this.params.season = result.data.season
+            window.user = result.data.user
+            window.season = result.data.season
           }
           catch (error) {
             alert(error)
             console.log(error)
         }
       }
-    },
+    }
 })

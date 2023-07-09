@@ -74,6 +74,12 @@ h3 {
   line-height: 2rem;
 }
 
+h4 {
+  @include headers;
+  font-size: 1.25rem;
+  line-height: 1.3rem;
+}
+
 p { 
   font-size: 1rem; 
   line-height: 1.2rem; 
@@ -92,18 +98,17 @@ table {
   margin: 2.4rem 1.2rem 1.2rem;
   padding: 1.5rem  3rem;
   box-shadow: 0 0.3rem 0.5rem $shadow;
-  border-bottom: 0.2rem solid;
+  border-top: 1px solid transparent;
+  border-bottom: 2px solid transparent;
 }
-
 .prime  {
-  border-color: $prime-color;
+  @include borders($prime-color);
   background: $prime-bg;
 }
 .seconde {
-  border-color: $seconde-color;
+  @include borders($prime-color);
   background-color: $seconde-bg;
 }
-
 .text-center {
   text-align: center;
 }

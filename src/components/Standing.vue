@@ -2,7 +2,7 @@
 import { onMounted, computed } from "vue";
 import { storeToRefs } from 'pinia'
 import { useCompetitionStore } from "../stores/competition";
-import { useLeagueStore } from "../stores/league";
+import { useParamStore } from "../stores/params"
 
 const props = defineProps({
   competition: Number,
@@ -11,8 +11,8 @@ const props = defineProps({
 });
 
 const store = useCompetitionStore();
-const params = useLeagueStore();
-const { getTranslation } = storeToRefs(params);
+const params = useParamStore()
+const { getTranslation } = storeToRefs(params)
 
 const standing = computed(() => {
   return store.competition.standing;

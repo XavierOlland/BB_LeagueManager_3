@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import axios from "axios"
+import axios from 'axios'
 
 const route = import.meta.env.VITE_BACKEND_URL + import.meta.env.VITE_BACKEND_ROUTES
 

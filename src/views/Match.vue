@@ -8,7 +8,7 @@
   const route = useRoute()
   const store = useMatchStore()
   const user = window.user
-  const admin = window.admin
+  const admin = window.user.admin
 
   const match = computed(() =>{
     return store.match
@@ -42,7 +42,7 @@
           <h3 v-else>{{match.season}} - {{match.competition_name}}</h3>
           <h3 v-if="match.team_1_score!=null">{{match.started}}</h3>
           <h3 v-else-if="match.started">Match prévu le {{ match.started }}</h3>
-          <h3 v-else>Match non joué {{ admin }}</h3>
+          <h3 v-else>Match non joué</h3>
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
           <p>Assistez à la conférence de presse des coachs et venez commenter sur le forum.</p>
         </div>
       </div>
-      <div v-else-if="match.team_1_score==null && (user.coach.id==match.coach_id_1 || user.coach.id==match.coach_id_2 || admin==1)" class="col-xs-6 plain seconde">
+      <div v-else-if="match.team_1_score==null && (user.coach_id==match.coach_id_1 || user.coach.id==match.coach_id_2 || admin==1)" class="col-xs-6 plain seconde">
         <h2>Enregistrement du match</h2>
         <Update :match="match" @submit="updateMatch"></Update>
       </div>
