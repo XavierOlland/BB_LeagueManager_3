@@ -33,12 +33,12 @@
         </div>
       </div>
     </div>
-    <div class="row middle-xs">
-      <Team v-if="team_1" :team="team_1" :score="match.team_1_score" :order="1" :colour="match.team_1_color_1"/>
+    <div class="row top-xs">
+      <Team v-if="team_1" :team="team_1" :score="match.team_1_score" :order="1" :colour="match.team_1_color_1" :colour_1="match.team_1_color_1" :colour_2="match.team_1_color_2"/>
       <div v-if="match.team_1_score==null" class="col-xs-2 center-xs versus">
         <img src="../../assets/images/Versus.png">
       </div>
-      <Team v-if="team_2" :team="team_2" :score="match.team_2_score" :order="2" :colour="match.team_2_color_1"/>
+      <Team v-if="team_2" :team="team_2" :score="match.team_2_score" :order="2" :colour_1="match.team_2_color_1" :colour_2="match.team_2_color_2"/>
     </div>
   </main>
 </template>

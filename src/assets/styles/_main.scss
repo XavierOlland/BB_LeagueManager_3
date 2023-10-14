@@ -59,19 +59,19 @@ a:visited, a:link {
 h1 {
   @include headers;
   font-size: 3.25rem;
-  line-height: 3.5rem;
+  line-height: 3.3rem;
 }
 
 h2 {
   @include headers;
   font-size: 2rem;
-  line-height: 2.5rem;
+  line-height: 2.05rem;
 }
 
 h3 {
   @include headers;
   font-size: 1.75rem;
-  line-height: 2rem;
+  line-height: 1.8rem;
 }
 
 h4 {
@@ -82,7 +82,7 @@ h4 {
 
 p { 
   font-size: 1rem; 
-  line-height: 1.2rem; 
+  line-height: 1.1rem; 
   text-align: justify; 
   color:$seconde-text; 
   display:inline-block; 

@@ -8,16 +8,20 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="match zelda middle-xs" :class="{'forum':$route.fullPath.indexOf('iframe')==1}" @click="router.push({ name: 'match', params: { id: match.id } })" :title="match.name_1+' VS ' + match.name_2">
-    <div v-if="$route.fullPath.indexOf('iframe')==1">
+  <div class="match zelda middle-xs" :class="{'row':$route.fullPath.indexOf('iframe')==1}" @click="router.push({ name: 'match', params: { id: match.id } })" :title="match.name_1+' VS ' + match.name_2">
+    <div v-if="$route.fullPath.indexOf('iframe')==1" class="col-xs-4">
       <h3>{{ match.name_1 }}</h3>
       <h4>{{ match.coach_name_1 }}</h4>
     </div> 
-    <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_1 + '.png'">
-    <img class="versus" v-if="match.score_1 == null" src="../../assets/images/Versus.png">
-      <span class="score" v-else > <span :class="{'winner': match.score_1 >match.score_2 }">{{match.score_1}}</span> - <span :class="{'winner': match.score_1 < match.score_2 }">{{match.score_2}}</span> </span>
-    <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_2 + '.png'">
-    <div v-if="$route.fullPath.indexOf('iframe')==1">
+    <div class=" middle-xs" :class="{'col-xs-4':$route.fullPath.indexOf('iframe')==1}">
+      <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_1 + '.png'">
+      <img class="versus" v-if="match.score_1 == null" src="../../assets/images/Versus.png">
+        <span class="score" v-else >
+          <span :class="{'winner': match.score_1 >match.score_2 }">{{match.score_1}}</span> - <span :class="{'winner': match.score_1 < match.score_2 }">{{match.score_2}}</span> 
+        </span>
+      <img :src="'https://bbbl.fr/img/logos/Logo_' + match.logo_2 + '.png'">
+    </div>  
+    <div v-if="$route.fullPath.indexOf('iframe')==1" class="col-xs-4">
       <h3>{{ match.name_2 }}</h3>
       <h4>{{ match.coach_name_2 }}</h4>
     </div>     

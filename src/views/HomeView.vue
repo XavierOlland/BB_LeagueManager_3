@@ -15,15 +15,15 @@ const user = window.user
       </div>
       <div class="col-xs-8" :class="{'col-xs-6':user.user_id<1}">
         <div class="plain seconde text-center">
-          <h1>Printemps 2523</h1>
+          <h1>Automne 2523</h1>
           
         </div>
         <div class="plain prime">
-          <Standing :competition="337" :details="true" :limit="14"/>
+          <Standing :competition="338" :details="true" :limit="14"/>
         </div>
       </div>
       <div class="col-xs-4" :class="{'col-xs-3':user.user_id<1}">
-        <Calendar :competitionID="337"/>
+        <Calendar :competitionID="338"/>
       </div>
     </div>
   </main>

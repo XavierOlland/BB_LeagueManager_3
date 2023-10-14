@@ -8,7 +8,7 @@
   const route = useRoute()
   const store = useMatchStore()
   const user = window.user
-  const admin = window.user.admin
+  const admin = window.admin
 
   const match = computed(() =>{
     return store.match
@@ -20,6 +20,10 @@
     return store.team_2
   })
   
+  function postToForum(forum) {
+    window.open(import.meta.env.VITE_FORUM_URL + "/posting.php?mode=post&f=" + forum + "&match=" + route.params.id, "_blank" )
+  }
+
   function viewForum(url) {
     window.open( url, "_blank" )
   }
@@ -47,19 +51,20 @@
       </div>
     </div>
     <div class="row middle-xs">
-      <Team v-if="team_1" :team="team_1" :score="match.team_1_score" :order="1" :colour="match.team_1_color_1"/>
+      <Team v-if="team_1" :team="team_1" :score="match.team_1_score" :order="1" :colour_1="match.team_1_color_1" :colour_2="match.team_1_color_2"/>
       <div v-if="match.team_1_score==null" class="col-xs-2 center-xs versus">
         <img src="../assets/images/Versus.png">
       </div>
-      <Team v-if="team_2" :team="team_2" :score="match.team_2_score" :order="2" :colour="match.team_2_color_1"/>
+      <Team v-if="team_2" :team="team_2" :score="match.team_2_score" :order="2" :colour_1="match.team_2_color_1" :colour_2="match.team_2_color_2"/>
     </div>
     <div class="row center-xs">
       <div v-if="match.team_1_score != null" class="col-xs-4">
         <div class="plain conf seconde zelda" @click="viewForum(match.forum_url)">
           <p>Assistez à la conférence de presse des coachs et venez commenter sur le forum.</p>
+          <button v-if="match.forum_url == null" @click="postToForum(match.forum)">Poster</button>
         </div>
       </div>
-      <div v-else-if="match.team_1_score==null && (user.coach_id==match.coach_id_1 || user.coach.id==match.coach_id_2 || admin==1)" class="col-xs-6 plain seconde">
+      <div v-else-if="match.team_1_score==null && (user.coach_id==match.coach_id_1 || user.coach_id==match.coach_id_2 || admin==1)" class="col-xs-6 plain seconde">
         <h2>Enregistrement du match</h2>
         <Update :match="match" @submit="updateMatch"></Update>
       </div>
@@ -76,5 +81,15 @@
       text-align: center;;
       font-size: 1.1rem;
     }
+  }
+  button {
+    background-color: $prime-color;
+    color: $prime-text;
+    border:1px solid $prime-text;
+    padding: 0.2rem;
+    font-family: Teko;
+    font-size: 1.6rem;
+    font-weight: 400;
+    cursor: pointer;
   }
 </style>

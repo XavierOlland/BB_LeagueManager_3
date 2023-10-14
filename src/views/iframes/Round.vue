@@ -21,7 +21,9 @@
     <div class="row center-xs">
       <div class="col-xs-10">
         <div class="row space-between">
-          <Preview v-for="match in round.matchs" :match="match"/>
+          <div  v-for="match in round.matchs" class="col-xs-12">
+              <Preview :match="match"/>
+          </div>
         </div>
       </div>
     </div>
