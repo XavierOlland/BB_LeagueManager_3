@@ -34,11 +34,9 @@ npm run build
 npm run lint
 ```
 
-<script>  
-    <?php  
-      define('PHPBB_ROOT_PATH','./../Forum/');  
-      include('../test/config.php');  
+<script>  <?php  
+      include('test/config2.php');  
       echo "window.user = ".json_encode($user->data).";";  
-      echo "window.admin = ".$admin  
+      echo "window.admin = ".$user->data['admin'].";";  
     ?>  
-  </script>
+</script>

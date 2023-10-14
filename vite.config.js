@@ -14,7 +14,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/assets/styles/_summer.scss";@import "@/assets/styles/_mixins.scss";`
+        additionalData: `@import "@/assets/styles/_autumn.scss";@import "@/assets/styles/_mixins.scss";`
       }
     }
   },
